@@ -56,7 +56,7 @@ function MenuSearchService($http, $q, ApiBasePath) {
       url: (ApiBasePath + "/menu_items.json")
     }).then (function (result) {
       result.data.menu_items.forEach( function(item) {
-        if( item.description.includes(searchTerm) ) foundItems.push(item);
+        if( item.description.includes(searchTerm.toLowerCase()) ) foundItems.push(item);
       });
       return foundItems;
     });
