@@ -1,0 +1,24 @@
+<!-- Display data in a bootstrap formatted table -->
+<div class="panel panel-primary" ng-if="items.length > 0">
+  <div class="panel-heading">Chinese menu choice narrowed down to {{ items.length }} items</div>
+  <table class="table">
+    <thead>
+      <th>#</th>
+      <th>Name</th>
+      <th>Short Name</th>
+      <th>Description</th>
+      <th>Remove item</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in items">
+        <th scope="row">{{ $index+1 }}</th>
+        <td>{{ item.name }}</td>
+        <td>{{ item.short_name }}</td>
+        <td>{{ item.description }}</td>
+        <td><button ng-click="onRemove({index: $index});">Don't want this one!</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="alert alert-danger" ng-if="items && items.length == 0">Nothing found</div>
