@@ -1,0 +1,98 @@
+<div class="container">
+  <h1>Sign Up for the newsletter </h1>
+  <fieldset>
+    <form name='signupForm' novalidate>
+
+      <div class="row">
+        <div  class="col-xs-4">
+          <div class="form-group">
+            <label for="firstName">First name</label>
+            <input type="text" name="firstName" class="form-control" placeholder="Enter your first name"
+                   ng-model="signupCtrl.user.firstname" required minlength="3" ng-maxlength="15">
+            <span ng-if="(signupForm.firstName.$error.minlength || signupForm.firstName.$error.required) && signupForm.firstName.$touched">
+              First name must be at least 3 characters long
+            </span>
+            <span ng-if="signupForm.firstName.$error.maxlength && signupForm.firstName.$touched">
+              First name must not be longer than 16 characters
+            </span>
+          </div>
+        </div>
+        <div  class="col-xs-4">
+          <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input type="text" name="lastName" class="form-control" placeholder="Enter your last name"
+                   ng-model="signupCtrl.user.lastname" required minlength="3" ng-maxlength="15">
+            <span ng-if="(signupForm.lastName.$error.minlength || signupForm.lastName.$error.required) && signupForm.lastName.$touched">
+              First name must be at least 3 characters long
+            </span>
+            <span ng-if="signupForm.lastName.$error.maxlength && signupForm.lastName.$touched">
+              First name must not be longer than 16 characters
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div  class="col-xs-4">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" name="email" placeholder="Email" class="form-control"
+                   ng-model="signupCtrl.user.email" required>
+            <span ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+              Must be a valid email address: handle@domain format
+            </span>
+          </div>
+        </div>
+        <div  class="col-xs-4">
+          <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input type="text" name="phone" placeholder="Phone ###-###-####" class="form-control"
+                   ng-model="signupCtrl.user.phone" pattern="(\d{3})-(\d{3})-(\d{4})">
+            <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
+             Phone number must be in the format ###-###-####.
+            </span>
+          </div>
+        </div>
+        <div  class="col-xs-4">
+          <div class="form-group">
+            <label for="menuNumber">Favorite dish menu number</label>
+            <input type="text" name="menuNumber" placeholder="L#" class="form-control"
+                   ng-model="signupCtrl.user.menunumber" required minlength="2" ng-maxlength="5"
+                   menu-number ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+            <span ng-show="signupForm.menuNumber.$pending">Validating the menu number...</span>
+            <span ng-show="signupForm.menuNumber.$error.menuNumber">No such menu number exists!</span>
+            <span ng-if="(signupForm.menuNumber.$error.minlength || signupForm.menuNumber.$error.required) && signupForm.menuNumber.$touched">
+              Menu number must be at least 2 characters long
+            </span>
+            <span ng-if="signupForm.menuNumber.$error.maxlength && signupForm.menuNumber.$touched">
+              Menu number must not be longer than 5 characters
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div  class="col-xs-4">
+          <button ng-disabled="signupForm.$invalid" class="btn btn-default"
+                  ng-click="signupCtrl.submit()">Save</button>
+        </div>
+      </div>
+    </form>
+
+  </fieldset>
+
+  <div class="row">
+    <p>&nbsp;</p>
+    <div  class="col-xs-6">
+      <div ng-show="signupCtrl.infoSaved" class="alert alert-success">Your information has been saved.</div>
+    </div>
+
+    <div id="info" ng-if="signupCtrl.completed">
+      Firstname: {{ signupCtrl.user.firstname}} <br>
+      Lasttname: {{ signupCtrl.user.lastname}} <br>
+      Email: {{ signupCtrl.user.email}} <br>
+      Phone: {{ signupCtrl.user.phone }}<br>
+      Menu number: {{ signupCtrl.user.menunumber }}
+    </div>
+  </div>
+</div>

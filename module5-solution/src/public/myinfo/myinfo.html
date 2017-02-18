@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>Registered user information</h1>
+
+  <div ng-hide="myinfoCtrl.valid">
+    <div class="alert alert-warning">
+      Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a>
+    </div>
+  </div>
+
+  <div ng-show="myinfoCtrl.valid">
+    <div class="form-horizontal">
+      <div class="row ">
+        <label class="col-sm-2 control-label">First name</label>
+        <div class="col-sm-2">
+          <p class="form-control-static">  {{ myinfoCtrl.user.firstname}} </p>
+        </div>
+        <label class="col-sm-2 control-label">Last name</label>
+        <div class="col-sm-2">
+          <p class="form-control-static">  {{ myinfoCtrl.user.lastname}} </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-2 control-label">Email address</label>
+        <div class="col-sm-2">
+          <p class="form-control-static">  {{ myinfoCtrl.user.email}} </p>
+        </div>
+        <label class="col-sm-2 control-label">Phone number</label>
+        <div class="col-sm-2">
+          <p class="form-control-static">  {{ myinfoCtrl.user.phone}} </p>
+        </div>
+        <label class="col-sm-2 control-label">Favorite dish menu number</label>
+        <div class="col-sm-2">
+          <p class="form-control-static">  {{ myinfoCtrl.user.menunumber}} </p>
+        </div>
+      </div>
+      <div class="row">
+        <hr>
+        <p>Your favorite menu item:</p>
+        <div class="col-md-3">&nbsp;</div>
+          <menu-item menu-item="myinfoCtrl.dishItem">
+          </menu-item>
+
+      </div>
+    </div>
+  </div>
+
+</div>
