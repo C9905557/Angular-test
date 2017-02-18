@@ -11,10 +11,8 @@ function SignupController(UserService) {
   signupCtrl.infoSaved = false;
 
   signupCtrl.submit = function () {
-    console.log("Submitted!", signupCtrl.user);
     UserService.saveUser(signupCtrl.user);
     signupCtrl.infoSaved = true;
-    console.log("User saved: ", UserService.getUser());
   };
 
 }

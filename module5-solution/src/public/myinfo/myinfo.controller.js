@@ -14,13 +14,11 @@ function MyinfoController(UserService) {
     myinfoCtrl.valid = true;
     UserService.getUserFavoriteDishItem().then( function(dishItem) {
       myinfoCtrl.dishItem = dishItem;
-      console.log("myinfoCtrl.dishItem", myinfoCtrl.dishItem);
     });
   }
   else {
     myinfoCtrl.valid = false;
   };
-  console.log("MyinfoController", myinfoCtrl.user, myinfoCtrl.valid)
 
 }
 
